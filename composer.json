@@ -1,0 +1,32 @@
+{
+    "name": "cmercado93/everlytic-api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carlos Mercado",
+            "email": "cmercado93@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.5",
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cmercado93\\EverlyticApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cmercado93\\EverlyticApi\\Tests\\": "tests/"
+        },
+        "files": [
+            "tests/Helpers/Helpers.php"
+        ]
+    }
+}
