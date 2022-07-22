@@ -3,6 +3,7 @@
 namespace Cmercado93\EverlyticApi\Http;
 
 use GuzzleHttp\Client as GuzzleClient;
+use Cmercado93\EverlyticApi\Exceptions\ConfigException;
 
 final class Api
 {

@@ -2,6 +2,8 @@
 
 namespace Cmercado93\EverlyticApi;
 
+use Cmercado93\EverlyticApi\Exceptions\ConfigException;
+
 class Configs
 {
     static $configs = [];

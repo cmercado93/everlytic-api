@@ -14,11 +14,13 @@ class EverlyticApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Configs::setConfig([
-            'base_url' => config('everlytic_api.base_url'),
-            'username' => config('everlytic_api.username'),
-            'api_key' => config('everlytic_api.api_key'),
-        ]);
+        if (config('everlytic_api.enabled')) {
+            Configs::setConfig([
+                'base_url' => config('everlytic_api.base_url'),
+                'username' => config('everlytic_api.username'),
+                'api_key' => config('everlytic_api.api_key'),
+            ]);
+        }
     }
 
     /**
