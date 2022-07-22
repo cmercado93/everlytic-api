@@ -24,7 +24,7 @@ class CreateTest extends TestCase
 
         $i = new Lists;
         try {
-            $res = $i->create('Pruebas de API', 'administracion@g2k.com.ar');
+            $res = $i->create('Pruebas de API', 'mail@mail.com');
             dd($res);
         } catch (ErrorException $e) {
             dd($e->getMessage());
