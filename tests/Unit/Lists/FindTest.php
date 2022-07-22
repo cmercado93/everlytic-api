@@ -1,6 +1,6 @@
 <?php
 
-namespace Cmercado93\EverlyticApi\Tests\Unit\Contacts;
+namespace Cmercado93\EverlyticApi\Tests\Unit\Lists;
 
 use Cmercado93\EverlyticApi\Lists;
 use Cmercado93\EverlyticApi\Configs;
@@ -29,7 +29,5 @@ class FindTest extends TestCase
         } catch (ErrorException $e) {
             dd($e->getMessage());
         }
-
-        $this->assertNotEmpty(env('API_KEY'));
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace Cmercado93\EverlyticApi\Tests\Unit\Contacts;
+namespace Cmercado93\EverlyticApi\Tests\Unit\Lists;
 
 use Cmercado93\EverlyticApi\Lists;
 use Cmercado93\EverlyticApi\Configs;
 use Cmercado93\EverlyticApi\Tests\TestCase;
+use Cmercado93\EverlyticApi\Exceptions\ErrorException;
 
 class CreateTest extends TestCase
 {
@@ -25,10 +26,8 @@ class CreateTest extends TestCase
         try {
             $res = $i->create('Pruebas de API', 'administracion@g2k.com.ar');
             dd($res);
-        } catch (\Exception $e) {
+        } catch (ErrorException $e) {
             dd($e->getMessage());
         }
-
-        $this->assertNotEmpty(env('API_KEY'));
     }
 }
