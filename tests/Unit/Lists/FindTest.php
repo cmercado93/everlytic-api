@@ -14,7 +14,7 @@ class FindTest extends TestCase
      *
      * @return void
      */
-    public function test_create()
+    public function test_find()
     {
         Configs::setConfig([
             'base_url' => env('BASE_URL'),
@@ -24,7 +24,7 @@ class FindTest extends TestCase
 
         $i = new Lists;
         try {
-            $res = $i->empty(66660);
+            $res = $i->findById(66660);
             dd($res);
         } catch (ErrorException $e) {
             dd($e->getMessage());
