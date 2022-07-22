@@ -2,7 +2,7 @@
 
 namespace Cmercado93\EverlyticApi\Exceptions;
 
-use EverlyticApi\Exceptions\BaseException;
+use Cmercado93\EverlyticApi\Exceptions\BaseException;
 
 class ConfigException extends BaseException
 {
