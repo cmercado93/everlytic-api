@@ -10,11 +10,11 @@
     ],
     "require": {
         "php": ">=7.1",
-        "guzzlehttp/guzzle": "^6.5",
-        "vlucas/phpdotenv": "^5.4"
+        "guzzlehttp/guzzle": "^6.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "vlucas/phpdotenv": "^5.4"
     },
     "autoload": {
         "psr-4": {
@@ -28,5 +28,12 @@
         "files": [
             "tests/Helpers/Helpers.php"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cmercado93\\EverlyticApi\\LaravelProviders\\EverlyticApiServiceProvider"
+            ]
+        }
     }
 }
