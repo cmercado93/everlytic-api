@@ -43,7 +43,7 @@ class Lists extends Entity
         return empty($res);
     }
 
-    public function suscribeContact(int $listId, int $contactId, string $emailStatus = ListSubscriptionStatus::SUBSCRIBED, string $mobileStatus = null) : bool
+    public function changeContactSubscription(int $listId, int $contactId, string $emailStatus = ListSubscriptionStatus::SUBSCRIBED, string $mobileStatus = null) : bool
     {
         $data = [
             'list_id' => $listId,
@@ -55,5 +55,24 @@ class Lists extends Entity
         $res = $this->post('/api/2.0/list_subscriptions/' . $listId, $data);
 
         return empty($res);
+    }
+
+    public function subscribeContact(int $listId, int $contactId, bool $subscribeMobile = false)
+    {
+        $mobileStatus = $subscribeMobile ? ListSubscriptionStatus::SUBSCRIBED : ListSubscriptionStatus::remove;
+
+        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::SUBSCRIBED, $mobileStatus);
+    }
+
+    public function unsubscribeContact(int $listId, int $contactId, bool $subscribeMobile = false)
+    {
+        $mobileStatus = $subscribeMobile ? ListSubscriptionStatus::UNSUBSCRIBED : ListSubscriptionStatus::remove;
+
+        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::UNSUBSCRIBED, $mobileStatus);
+    }
+
+    public function removeContactSubscription(int $listId, int $contactId, bool $subscribeMobile = false)
+    {
+        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::REMOVE, ListSubscriptionStatus::REMOVE);
     }
 }
