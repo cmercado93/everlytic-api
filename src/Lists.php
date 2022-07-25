@@ -43,6 +43,17 @@ class Lists extends Entity
         return empty($res);
     }
 
+    public function changeContactSubscriptionBulk(int $listId, array $subscriptions) : bool
+    {
+        $data = [
+            'subscriptions' => $subscriptions,
+        ];
+
+        $res = $this->post('/api/2.0/list_subscriptions/' . $listId . '/bulk', $data);
+
+        return $res[0]['data'] ?? false;
+    }
+
     public function changeContactSubscription(int $listId, int $contactId, string $emailStatus = ListSubscriptionStatus::SUBSCRIBED, string $mobileStatus = null) : bool
     {
         $data = [
@@ -54,25 +65,16 @@ class Lists extends Entity
 
         $res = $this->post('/api/2.0/list_subscriptions/' . $listId, $data);
 
-        return empty($res);
+        return $res['boolean'] ?? false;
     }
 
-    public function subscribeContact(int $listId, int $contactId, bool $subscribeMobile = false)
+    public function subscribeContact(int $listId, int $contactId)
     {
-        $mobileStatus = $subscribeMobile ? ListSubscriptionStatus::SUBSCRIBED : ListSubscriptionStatus::remove;
-
-        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::SUBSCRIBED, $mobileStatus);
+        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::SUBSCRIBED);
     }
 
-    public function unsubscribeContact(int $listId, int $contactId, bool $subscribeMobile = false)
+    public function unsubscribeContact(int $listId, int $contactId)
     {
-        $mobileStatus = $subscribeMobile ? ListSubscriptionStatus::UNSUBSCRIBED : ListSubscriptionStatus::remove;
-
-        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::UNSUBSCRIBED, $mobileStatus);
-    }
-
-    public function removeContactSubscription(int $listId, int $contactId, bool $subscribeMobile = false)
-    {
-        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::REMOVE, ListSubscriptionStatus::REMOVE);
+        return $this->changeContactSubscription($listId, $contactId, ListSubscriptionStatus::UNSUBSCRIBED);
     }
 }

@@ -56,10 +56,14 @@ abstract class Entity
 
         $res = [];
 
+        unset($body['links']);
+
         if (isset($body['collection'])) {
             $res = $body['collection'];
         } elseif (isset($body['item'])) {
             $res = $body['item'];
+        } else {
+            $res = $body;
         }
 
         return $res;

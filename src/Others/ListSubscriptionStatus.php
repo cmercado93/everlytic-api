@@ -13,6 +13,4 @@ class ListSubscriptionStatus
     const UNCONFIRMED = 'unconfirmed';
 
     const FORWARDED = 'forwarded';
-
-    const REMOVE = '';
 }
