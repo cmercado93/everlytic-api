@@ -23,11 +23,30 @@ class FindTest extends TestCase
         ]);
 
         $i = new Lists;
-        try {
-            $res = $i->findById(66660);
-            dd($res);
-        } catch (ErrorException $e) {
-            dd($e->getMessage());
-        }
+
+        $res = $i->findById(66660);
+
+        $this->assertArrayHasKey('id', $res);
+    }
+
+    public function test_findAll()
+    {
+        Configs::setConfig([
+            'base_url' => env('BASE_URL'),
+            'username' => env('USERNAME'),
+            'api_key' => env('API_KEY'),
+        ]);
+
+        $i = new Lists;
+
+        $res = $i->findAll();
+
+        $expected = [
+            0 => [
+                'data' => [],
+            ],
+        ];
+
+        $this->assertArraySubset($expected, $res);
     }
 }

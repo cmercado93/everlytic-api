@@ -23,11 +23,9 @@ class CreateTest extends TestCase
         ]);
 
         $i = new Lists;
-        try {
-            $res = $i->create('Pruebas de API', 'mail@mail.com');
-            dd($res);
-        } catch (ErrorException $e) {
-            dd($e->getMessage());
-        }
+
+        $res = $i->create('Pruebas de API', 'mail@mail.com');
+
+        $this->assertArrayHasKey('id', $res);
     }
 }
