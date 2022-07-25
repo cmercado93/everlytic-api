@@ -13,7 +13,7 @@ class Contacts extends Entity
 
     public function createInBulk(array $data) : array
     {
-        return $this->post('/api/2.0/contacts', [
+        return $this->post('/api/2.0/contacts/bulk', [
             'contacts' => $data
         ]);
     }
