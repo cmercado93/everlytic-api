@@ -2,6 +2,7 @@
     "name": "cmercado93/everlytic-api",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Carlos Mercado",
